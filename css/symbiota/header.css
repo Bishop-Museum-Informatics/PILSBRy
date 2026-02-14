@@ -52,12 +52,12 @@ nav.top-login > span > form{
   padding-top: 0.5rem;
   grid-column: 1;
   display: flex;
-  align-items: stretch;
+  align-items: center;
 }
 
 .top-brand img {
   width: var(--logo-width);
-  max-width: 100px;
+  max-width: 200px;
   height: auto;
   object-fit: contain; /* scale image keeping proportions */
   filter: brightness(1);
