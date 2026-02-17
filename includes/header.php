@@ -61,63 +61,70 @@ $collectionSearchPage = !empty($SHOULD_USE_HARVESTPARAMS) ? '/collections/index.
 			<nav class="top-menu" aria-label="hamburger-nav">
 				<ul class="menu">
 					<li>
-						<a href="<?= $CLIENT_ROOT ?>/index.php">
-							<?= $LANG['H_HOME'] ?>
-						</a>
+						<a href="<?php echo $CLIENT_ROOT; ?>/index.php" >Home</a>
 					</li>
 					<li>
-						<a href="<?= $CLIENT_ROOT . $collectionSearchPage ?>">
-							<?= $LANG['H_SEARCH'] ?>
-						</a>
-					</li>
-					<li>
-						<a href="<?= $CLIENT_ROOT ?>/collections/map/index.php" rel="noopener noreferrer">
-							<?= $LANG['H_MAP_SEARCH'] ?>
-						</a>
-					</li>
-					<li>
-						<a href="<?= $CLIENT_ROOT ?>/checklists/index.php">
-							<?= $LANG['H_INVENTORIES'] ?>
-						</a>
-					</li>
-					<li>
-						<a href="<?= $CLIENT_ROOT ?>/imagelib/search.php">
-							<?= $LANG['H_IMAGES'] ?>
-						</a>
-					</li>
-					<li>
-						<a href="<?= $CLIENT_ROOT ?>/includes/usagepolicy.php">
-							<?= $LANG['H_DATA_USAGE'] ?>
-						</a>
-					</li>
-					<li>
-						<a href="https://docs.symbiota.org/about/" target="_blank" rel="noopener noreferrer">
-							<?= $LANG['H_HELP'] ?>
-						</a>
-					</li>
-					<li>
-						<a href='<?= $CLIENT_ROOT ?>/sitemap.php'>
-							<?= $LANG['H_SITEMAP'] ?>
-						</a>
-					</li>
-					<li>
-						<a href="#">Example Dropdown</a>
+						<a href="<?php echo $CLIENT_ROOT; ?>/collections/harvestparams.php" >Search</a>
 						<ul>
 							<li>
-								<a href="#">Link 1</a>
+								<a href="<?php echo $CLIENT_ROOT; ?>/collections/index.php" >Collections Search</a>
 							</li>
 							<li>
-								<a href="#">Link 2</a>
+								<a href="<?php echo $CLIENT_ROOT; ?>/collections/map/index.php">Map Search</a>
 							</li>
 							<li>
-								<a href="#">Sub Menu</a>
-								<ul>
-									<li>
-										<a href="#">Link 3</a>
-									</li>
-								</ul>
+								<a href="<?php echo $CLIENT_ROOT; ?>/imagelib/search.php">Image Search</a>
+							</li>
+							<li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/taxa/taxonomy/taxonomydisplay.php?target=Animalia">Taxonomy Search</a>
 							</li>
 						</ul>
+					</li>
+					<li>
+						<a href="<?php echo $CLIENT_ROOT; ?>/collections/list.php?db=allspec" >Browse</a>
+						<ul>
+						    <li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/collections/list.php?db=allspec" >Browse Specimens</a>
+							</li>
+							<li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/imagelib/index.php" >Browse Images</a>
+							</li>
+							<li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php" >Browse Collections</a>
+							</li>
+							<li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/maps.php" >Browse Digitized Maps</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php" >Collections</a>
+						<ul>
+							<li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php?collid=1" >Bernice Pauahi Bishop Museum</a>
+							</li>
+							<li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php?collid=2" >Academy of Natural Sciences at Drexel</a>
+							</li>
+							<li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php?collid=3" >University of Michigan's Museum of Zoology</a>
+							</li>
+							<li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php?collid=4" >Harvard Museum of Comparative Zoology</a>
+							</li>
+							<li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php?collid=5" >Florida Museum of Natural History</a>
+							</li>
+							<li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php?collid=6" >Field Museum</a>
+							</li>
+							<li>
+								<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php?collid=7" >Natural History Museum of Los Angeles County</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="<?php echo $CLIENT_ROOT; ?>/contact.php" >Contact</a>
 					</li>
 				</ul>
 			</nav>
