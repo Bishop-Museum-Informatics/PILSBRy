@@ -64,7 +64,7 @@ $collectionSearchPage = !empty($SHOULD_USE_HARVESTPARAMS) ? '/collections/index.
 						<a href="<?php echo $CLIENT_ROOT; ?>/index.php" >Home</a>
 					</li>
 					<li>
-						<a href="#" >Search</a>
+						<a href="<?= $CLIENT_ROOT . $collectionSearchPage ?>">Search</a>
 						<ul>
 							<li>
 								<a href="<?= $CLIENT_ROOT . $collectionSearchPage ?>">
@@ -88,7 +88,7 @@ $collectionSearchPage = !empty($SHOULD_USE_HARVESTPARAMS) ? '/collections/index.
 						</ul>
 					</li>-->
 					<li>
-						<a href="#" >Collections</a>
+						<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php" >Collections</a>
 						<ul>
 							<li>
 								<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php?collid=1" >Bernice Pauahi Bishop Museum</a>
