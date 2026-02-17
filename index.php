@@ -97,7 +97,7 @@ header('Content-Type: text/html; charset=' . $CHARSET);
 					<li>Specimen records from six major U.S. malacology collections</li>
 					<li>Integrated data from museum holdings and ongoing scientific research</li>
 					<li>High-resolution photographs of live animals and preserved shells</li>
-					<li>Digitized collection maps spanning more than 100 years</li>
+<!--					<li>Digitized collection maps spanning more than 100 years</li>-->
 					<li>Georeferenced occurrence records across Pacific islands, including remote and historically under-documented locations</li>
 					<li>Distribution data supporting taxonomic study and conservation assessment</li>
 				</ul>

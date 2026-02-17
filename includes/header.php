@@ -64,41 +64,31 @@ $collectionSearchPage = !empty($SHOULD_USE_HARVESTPARAMS) ? '/collections/index.
 						<a href="<?php echo $CLIENT_ROOT; ?>/index.php" >Home</a>
 					</li>
 					<li>
-						<a href="<?php echo $CLIENT_ROOT; ?>/collections/harvestparams.php" >Search</a>
+						<a href="#" >Search</a>
 						<ul>
 							<li>
-								<a href="<?php echo $CLIENT_ROOT; ?>/collections/index.php" >Collections Search</a>
+								<a href="<?= $CLIENT_ROOT . $collectionSearchPage ?>">
+									Record Search
+								</a>
 							</li>
 							<li>
 								<a href="<?php echo $CLIENT_ROOT; ?>/collections/map/index.php">Map Search</a>
 							</li>
 							<li>
-								<a href="<?php echo $CLIENT_ROOT; ?>/imagelib/search.php">Image Search</a>
-							</li>
-							<li>
-								<a href="<?php echo $CLIENT_ROOT; ?>/taxa/taxonomy/taxonomydisplay.php?target=Animalia">Taxonomy Search</a>
+								<a href="<?php echo $CLIENT_ROOT; ?>/imagelib/search.php">Media Search</a>
 							</li>
 						</ul>
 					</li>
-					<li>
-						<a href="<?php echo $CLIENT_ROOT; ?>/collections/list.php?db=allspec" >Browse</a>
+<!--					<li>
+						<a href="#" >Browse</a>
 						<ul>
-						    <li>
-								<a href="<?php echo $CLIENT_ROOT; ?>/collections/list.php?db=allspec" >Browse Specimens</a>
-							</li>
 							<li>
-								<a href="<?php echo $CLIENT_ROOT; ?>/imagelib/index.php" >Browse Images</a>
-							</li>
-							<li>
-								<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php" >Browse Collections</a>
-							</li>
-							<li>
-								<a href="<?php echo $CLIENT_ROOT; ?>/maps.php" >Browse Digitized Maps</a>
+								<a href="<?php echo $CLIENT_ROOT; ?>/pilsbry/maps.php" >Browse Digitized Maps</a>
 							</li>
 						</ul>
-					</li>
+					</li>-->
 					<li>
-						<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php" >Collections</a>
+						<a href="#" >Collections</a>
 						<ul>
 							<li>
 								<a href="<?php echo $CLIENT_ROOT; ?>/collections/misc/collprofiles.php?collid=1" >Bernice Pauahi Bishop Museum</a>
@@ -124,7 +114,10 @@ $collectionSearchPage = !empty($SHOULD_USE_HARVESTPARAMS) ? '/collections/index.
 						</ul>
 					</li>
 					<li>
-						<a href="<?php echo $CLIENT_ROOT; ?>/contact.php" >Contact</a>
+						<a href="<?php echo $CLIENT_ROOT; ?>/taxa/taxonomy/taxonomydisplay.php?target=Animalia">Taxonomy</a>
+					</li>
+					<li>
+						<a href="<?php echo $CLIENT_ROOT; ?>/pilsbry/contact.php" >Contact</a>
 					</li>
 					<li>
 						<a href='<?= $CLIENT_ROOT ?>/sitemap.php'>
