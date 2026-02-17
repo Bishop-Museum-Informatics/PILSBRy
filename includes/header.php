@@ -126,6 +126,11 @@ $collectionSearchPage = !empty($SHOULD_USE_HARVESTPARAMS) ? '/collections/index.
 					<li>
 						<a href="<?php echo $CLIENT_ROOT; ?>/contact.php" >Contact</a>
 					</li>
+					<li>
+						<a href='<?= $CLIENT_ROOT ?>/sitemap.php'>
+							<?= $LANG['H_SITEMAP'] ?>
+						</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
