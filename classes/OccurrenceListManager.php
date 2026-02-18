@@ -28,7 +28,7 @@ class OccurrenceListManager extends OccurrenceManager{
 		if(!$this->recordCount || $this->reset) $this->setRecordCnt($sqlWhere);
 		$sql = 'SELECT o.occid, o.collid, c.institutioncode, c.collectioncode, c.icon, o.institutioncode AS instcodeoverride, o.collectioncode AS collcodeoverride, '.
 			'o.catalognumber, o.family, o.sciname, o.scientificnameauthorship, o.tidinterpreted, o.recordedby, o.recordnumber, o.eventdate, '.
-			'o.country, o.stateprovince, o.county, o.island, o.islandGroup, o.locality, o.decimallatitude, o.decimallongitude, o.recordsecurity, o.securityreason, '.
+			'o.country, o.stateprovince, o.county, o.island, o.islandGroup, o.locality, o.fieldNumber, o.decimallatitude, o.decimallongitude, o.recordsecurity, o.securityreason, '.
 			'o.habitat, o.substrate, o.minimumelevationinmeters, o.maximumelevationinmeters, o.observeruid, c.sortseq '.
 			'FROM omoccurrences o INNER JOIN omcollections c ON o.collid = c.collid ';
 		$sql .= $this->getTableJoins($sqlWhere).$sqlWhere;
@@ -86,6 +86,7 @@ class OccurrenceListManager extends OccurrenceManager{
 				//pils edit
 				$retArr[$row->occid]['island'] = $this->cleanOutStr($row->island);
 				$retArr[$row->occid]['islandGroup'] = $this->cleanOutStr($row->islandGroup);
+				$retArr[$row->occid]['fieldnum'] = $this->cleanOutStr($row->fieldNumber);
 				//end pils edit
 				$retArr[$row->occid]['obsuid'] = $row->observeruid;
 				$retArr[$row->occid]['recordsecurity'] = $row->recordsecurity;

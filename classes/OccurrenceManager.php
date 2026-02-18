@@ -76,6 +76,7 @@ class OccurrenceManager extends OccurrenceTaxaManager {
 				//pils edit
 				if(isset($voucherVariableArr['island'])) $this->searchTermArr['island'] = $voucherVariableArr['island'];
 				if(isset($voucherVariableArr['islandGroup'])) $this->searchTermArr['islandGroup'] = $voucherVariableArr['islandGroup'];
+				if(isset($voucherVariableArr['fieldnum'])) $this->searchTermArr['fieldnum'] = $voucherVariableArr['fieldnum'];
 				//end pils edit
 				if(isset($voucherVariableArr['locality'])) $this->searchTermArr['local'] = $voucherVariableArr['locality'];
 				if(isset($voucherVariableArr['recordedby'])) $this->searchTermArr['collector'] = $voucherVariableArr['recordedby'];
@@ -217,7 +218,7 @@ class OccurrenceManager extends OccurrenceTaxaManager {
 			foreach($islandGroupArr as $k => $value){
 				if($value == 'NULL'){
 					$tempArr[] = '(o.islandGroup IS NULL)';
-					$islandGroupArr[$k] = 'islandGroup IS NULL';
+					$islandGroupArr[$k] = 'Island Group IS NULL';
 				}
 				else{
 					$tempArr[] = '(o.islandGroup = "'.$this->cleanInStr($value).'")';
@@ -225,6 +226,21 @@ class OccurrenceManager extends OccurrenceTaxaManager {
 			}
 			$sqlWhere .= 'AND ('.implode(' OR ',$tempArr).') ';
 			$this->displaySearchArr[] = implode(' ' .  $this->LANG['OR'] . ' ', $islandGroupArr);
+		}
+		if(array_key_exists("fieldnum",$this->searchTermArr)){
+			$fieldnumArr = explode(";",$this->searchTermArr["fieldnum"]);
+			$tempArr = Array();
+			foreach($fieldnumArr as $k => $value){
+				if($value == 'NULL'){
+					$tempArr[] = '(o.fieldNumber IS NULL)';
+					$fieldnumArr[$k] = 'Field Number IS NULL';
+				}
+				else{
+					$tempArr[] = '(o.fieldNumber = "'.$this->cleanInStr($value).'")';
+				}
+			}
+			$sqlWhere .= 'AND ('.implode(' OR ',$tempArr).') ';
+			$this->displaySearchArr[] = implode(' ' .  $this->LANG['OR'] . ' ', $fieldnumArr);
 		}
 		//end pils edit
 		if(array_key_exists('local',$this->searchTermArr)){
@@ -958,6 +974,17 @@ class OccurrenceManager extends OccurrenceTaxaManager {
 			}
 			else{
 				unset($this->searchTermArr['islandGroup']);
+			}
+		}
+		
+		if(array_key_exists('fieldnum', $_REQUEST)){
+			$fieldnum = $this->cleanInputStr($_REQUEST['fieldnum']);
+			if($fieldnum){
+				$str = str_replace(',', ';', $fieldnum);
+				$this->searchTermArr['fieldnum'] = $str;
+			}
+			else{
+				unset($this->searchTermArr['fieldnum']);
 			}
 		}
 		//end pils edit

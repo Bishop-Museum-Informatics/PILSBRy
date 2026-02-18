@@ -409,7 +409,7 @@ $relationshipTypes = $associationManager->getRelationshipTypes();
 							<div class="input-text-container">
 								<label for="fieldnum" class="input-text--outlined">
 									<span class="screen-reader-only">Field Number</span>
-									<input type="text" id="collnum" size="31" name="fieldnum" value="" data-chip="Field Number" />
+									<input type="text" id="fieldnum" size="31" name="fieldnum" value="" data-chip="Field Number" />
 									<span class="inset-input-label">Field Number</span>
 								</label>
 							</div>
