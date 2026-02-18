@@ -733,6 +733,12 @@ $relationshipTypes = $associationManager->getRelationshipTypes();
 		county: {
 			id: 'county',
 		},
+		island_group: {
+			id: 'islandGroup',
+		},
+		island: {
+			id: 'island',
+		},
 	})
 </script>
 

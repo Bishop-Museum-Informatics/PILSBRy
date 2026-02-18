@@ -1094,6 +1094,8 @@ class GeographicThesaurus extends Manager {
 	function placeExists($geo_data = []) {
 
 		$form_conversion = [
+			'island' => 30,
+			'islandGroup' => 20,
 			'country' => 50,
 			'stateprovince' => 60,
 			'county' => 70,

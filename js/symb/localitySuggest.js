@@ -21,10 +21,12 @@ function geothesaurusSource(params) {
 	}
 }
 
-function initLocalitySuggest(opts = { country, state_province, county, municipality }) {
+function initLocalitySuggest(opts = { country, state_province, county, municipality, island_group, island }) {
 	if (!opts) return;
 	//Numbers are arbirary and are a number form of ADM0-ADM3 or 50-80 system but with more depth
 	const localeParams = {
+		island_group: { geolevel: 20 },
+		island: { geolevel: 30 },
 		country: { geolevel: 50 },
 		state_province: { geolevel: 60, parent: opts?.country?.id },
 		county: { geolevel: 70, parent: opts?.state_province?.id },
