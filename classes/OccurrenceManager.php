@@ -73,6 +73,10 @@ class OccurrenceManager extends OccurrenceTaxaManager {
 				if(isset($voucherVariableArr['country'])) $this->searchTermArr['country'] = $voucherVariableArr['country'];
 				if(isset($voucherVariableArr['state'])) $this->searchTermArr['state'] = $voucherVariableArr['state'];
 				if(isset($voucherVariableArr['county'])) $this->searchTermArr['county'] = $voucherVariableArr['county'];
+				//pils edit
+				if(isset($voucherVariableArr['island'])) $this->searchTermArr['island'] = $voucherVariableArr['island'];
+				if(isset($voucherVariableArr['islandGroup'])) $this->searchTermArr['islandGroup'] = $voucherVariableArr['islandGroup'];
+				//end pils edit
 				if(isset($voucherVariableArr['locality'])) $this->searchTermArr['local'] = $voucherVariableArr['locality'];
 				if(isset($voucherVariableArr['recordedby'])) $this->searchTermArr['collector'] = $voucherVariableArr['recordedby'];
 				if(isset($voucherVariableArr['taxon']) && !$this->taxaArr) $this->setTaxonRequestVariable(array('taxa'=>$voucherVariableArr['taxon'],'usethes'=>1));
@@ -188,6 +192,41 @@ class OccurrenceManager extends OccurrenceTaxaManager {
 			$sqlWhere .= 'AND ('.implode(' OR ',$tempArr).') ';
 			$this->displaySearchArr[] = implode(' ' .  $this->LANG['OR'] . ' ', $countyArr);
 		}
+		//pils edit
+		if(array_key_exists("island",$this->searchTermArr)){
+			$islandArr = explode(";",$this->searchTermArr["island"]);
+			$tempArr = Array();
+			foreach($islandArr as $k => $value){
+				if($value == 'NULL'){
+					$tempArr[] = '(o.island IS NULL)';
+					$islandArr[$k] = 'Island IS NULL';
+				}
+				else{
+					$term = $this->cleanInStr(trim(str_ireplace(' island',' ',$value),'%'));
+					//if(strlen($term) < 4) $term .= ' ';
+
+					$tempArr[] = '(o.island LIKE "'.$term.'%")';
+				}
+			}
+			$sqlWhere .= 'AND ('.implode(' OR ',$tempArr).') ';
+			$this->displaySearchArr[] = implode(' ' .  $this->LANG['OR'] . ' ', $islandArr);
+		}
+		if(array_key_exists("islandGroup",$this->searchTermArr)){
+			$islandGroupArr = explode(";",$this->searchTermArr["islandGroup"]);
+			$tempArr = Array();
+			foreach($islandGroupArr as $k => $value){
+				if($value == 'NULL'){
+					$tempArr[] = '(o.islandGroup IS NULL)';
+					$islandGroupArr[$k] = 'islandGroup IS NULL';
+				}
+				else{
+					$tempArr[] = '(o.islandGroup = "'.$this->cleanInStr($value).'")';
+				}
+			}
+			$sqlWhere .= 'AND ('.implode(' OR ',$tempArr).') ';
+			$this->displaySearchArr[] = implode(' ' .  $this->LANG['OR'] . ' ', $islandGroupArr);
+		}
+		//end pils edit
 		if(array_key_exists('local',$this->searchTermArr)){
 			$localArr = explode(';',$this->searchTermArr['local']);
 			$tempSqlArr = Array();
@@ -899,6 +938,29 @@ class OccurrenceManager extends OccurrenceTaxaManager {
 				unset($this->searchTermArr['county']);
 			}
 		}
+		//pils edit
+		if(array_key_exists('island', $_REQUEST)){
+			$island = $this->cleanInputStr($_REQUEST['island']);
+			if($island){
+				$str = str_replace(',', ';', $island);
+				$this->searchTermArr['island'] = $str;
+			}
+			else{
+				unset($this->searchTermArr['island']);
+			}
+		}
+		
+		if(array_key_exists('islandGroup', $_REQUEST)){
+			$islandGroup = $this->cleanInputStr($_REQUEST['islandGroup']);
+			if($islandGroup){
+				$str = str_replace(',', ';', $islandGroup);
+				$this->searchTermArr['islandGroup'] = $str;
+			}
+			else{
+				unset($this->searchTermArr['islandGroup']);
+			}
+		}
+		//end pils edit
 		if(array_key_exists('local',$_REQUEST)){
 			$local = $this->cleanInputStr($_REQUEST['local']);
 			if($local){

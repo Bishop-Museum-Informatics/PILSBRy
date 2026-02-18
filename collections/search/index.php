@@ -117,36 +117,65 @@ $relationshipTypes = $associationManager->getRelationshipTypes();
 
 					<!-- Accordion header -->
 					<label for="taxonomy" class="accordion-header"><?php echo $LANG['TAXONOMY'] ?></label>
-
+					<!--pils edit-->
 					<!-- Taxonomy -->
 					<div id="search-form-taxonomy" class="content">
-						<div id="taxa-text" class="input-text-container">
-							<label for="taxa" class="input-text--outlined">
-								<span class="screen-reader-only"><?php echo $LANG['TAXON'] ?></span>
-								<input type="text" name="taxa" id="taxa" data-chip="<?php echo $LANG['TAXON'] ?>" />
-								<span class="inset-input-label"><?php echo $LANG['TAXON'] ?></span>
-							</label>
-						</div>
-						<span class="assistive-text"><?php echo $LANG['TYPE_CHAR_FOR_SUGGESTIONS'] ?></span>
-						<div style="padding-top:14px">
-							<div class="select-container" style="position: relative">
-								<label for="taxontype" class="screen-reader-only"><?php echo $LANG['TAXON_TYPE'] ?></label>
-								<select name="taxontype" id="taxontype" style="margin-top:0;padding-top:0; margin-bottom: 0.5rem">
-									<option id="taxontype-scientific" value="2" data-chip="<?php echo $LANG['TAXON'] . ': ' . $LANG['SCIENTIFIC_NAME'] ?>"><?php echo $LANG['SCIENTIFIC_NAME'] ?></option>
-									<option id="taxontype-family" value="3" data-chip="<?php echo $LANG['TAXON'] . ': ' . $LANG['FAMILY'] ?>"><?php echo $LANG['FAMILY'] ?></option>
-									<option id="taxontype-group" value="4" data-chip="<?php echo $LANG['TAXON'] . ': ' . $LANG['TAXONOMIC_GROUP'] ?>"><?php echo $LANG['TAXONOMIC_GROUP'] ?></option>
-									<option id="taxontype-common" value="5" data-chip="<?php echo $LANG['TAXON'] . ': ' . $LANG['COMMON_NAME'] ?>"><?php echo $LANG['COMMON_NAME'] ?></option>
-								</select>
-								<span class="inset-input-label"><?php echo $LANG['TAXON_TYPE'] ?></span>
+						<div>
+							<div id="taxa-text" class="input-text-container">
+								<label for="taxa" class="input-text--outlined">
+									<span class="screen-reader-only"><?php echo $LANG['TAXON'] ?></span>
+									<input type="text" name="taxa" id="taxa" data-chip="<?php echo $LANG['TAXON'] ?>" />
+									<span class="inset-input-label"><?php echo $LANG['TAXON'] ?></span>
+								</label>
+							</div>
+							<!--<span class="assistive-text"><?php echo $LANG['TYPE_CHAR_FOR_SUGGESTIONS'] ?></span>-->
+							<!--<div style="padding-top:14px">-->
+							<!--	<div class="select-container" style="position: relative">-->
+							<!--		<label for="taxontype" class="screen-reader-only"><?php echo $LANG['TAXON_TYPE'] ?></label>-->
+							<!--		<select name="taxontype" id="taxontype" style="margin-top:0;padding-top:0; margin-bottom: 0.5rem">-->
+							<!--			<option id="taxontype-scientific" value="2" data-chip="<?php echo $LANG['TAXON'] . ': ' . $LANG['SCIENTIFIC_NAME'] ?>"><?php echo $LANG['SCIENTIFIC_NAME'] ?></option>-->
+							<!--			<option id="taxontype-family" value="3" data-chip="<?php echo $LANG['TAXON'] . ': ' . $LANG['FAMILY'] ?>"><?php echo $LANG['FAMILY'] ?></option>-->
+							<!--			<option id="taxontype-group" value="4" data-chip="<?php echo $LANG['TAXON'] . ': ' . $LANG['TAXONOMIC_GROUP'] ?>"><?php echo $LANG['TAXONOMIC_GROUP'] ?></option>-->
+							<!--			<option id="taxontype-common" value="5" data-chip="<?php echo $LANG['TAXON'] . ': ' . $LANG['COMMON_NAME'] ?>"><?php echo $LANG['COMMON_NAME'] ?></option>-->
+							<!--		</select>-->
+							<!--		<span class="inset-input-label"><?php echo $LANG['TAXON_TYPE'] ?></span>-->
+							<!--	</div>-->
+							<!--</div>-->
+							<div>
+								<input type="checkbox" name="usethes" id="usethes" data-chip="<?php echo $LANG['INCLUDE_SYNONYMS'] ?>" value="1" checked />
+								<label for="usethes">
+									<span class="ml-1"><?php echo $LANG['INCLUDE_SYNONYMS'] ?></span>
+								</label>
 							</div>
 						</div>
 						<div>
-							<input type="checkbox" name="usethes" id="usethes" data-chip="<?php echo $LANG['INCLUDE_SYNONYMS'] ?>" value="1" checked />
-							<label for="usethes">
-								<span class="ml-1"><?php echo $LANG['INCLUDE_SYNONYMS'] ?></span>
-							</label>
+							<div>
+								<input type="checkbox" name="isterr" id="isterr" data-chip="Terrestrial" value="1" checked />
+								<label for="isterr">
+									<span class="ml-1">Terrestrial</span>
+								</label>
+							</div>
+							<div>
+								<input type="checkbox" name="ismarine" id="ismarine" data-chip="Marine" value="1" checked />
+								<label for="ismarine">
+									<span class="ml-1">Marine</span>
+								</label>
+							</div>
+							<div>
+								<input type="checkbox" name="isfreshwater" id="isfreshwater" data-chip="Freshwater" value="1" checked />
+								<label for="isfreshwater">
+									<span class="ml-1">Freshwater</span>
+								</label>
+							</div>
+							<div>
+								<input type="checkbox" name="isbrackish" id="isbrackish" data-chip="Brackish" value="1" checked />
+								<label for="isbrackish">
+									<span class="ml-1">Brackish</span>
+								</label>
+							</div>
 						</div>
 					</div>
+					<!--end pils edit-->
 				</section>
 
 				<!-- Locality -->
@@ -173,15 +202,31 @@ $relationshipTypes = $associationManager->getRelationshipTypes();
 										<span class="inset-input-label"><?php echo $LANG['STATE'] ?></span>
 									</label>
 								</div>
-								<div class="input-text-container">
+								<!--pils edit-->
+<!--								<div class="input-text-container">
 									<label for="county" class="input-text--outlined">
 										<span class="screen-reader-only"><?php echo $LANG['COUNTY'] ?></span>
 										<input type="text" name="county" id="county" data-chip="<?php echo $LANG['COUNTY'] ?>" />
 										<span class="inset-input-label"><?php echo $LANG['COUNTY'] ?></span>
 									</label>
+								</div>-->
+								<div class="input-text-container">
+									<label for="islandGroup" class="input-text--outlined">
+										<span class="screen-reader-only">Island Group</span>
+										<input type="text" name="islandGroup" id="islandGroup" data-chip="Island Group" />
+										<span class="inset-input-label">Island Group</span>
+									</label>
 								</div>
 							</div>
 							<div>
+								<div class="input-text-container">
+									<label for="island" class="input-text--outlined">
+										<span class="screen-reader-only">Island</span>
+										<input type="text" name="island" id="island" data-chip="Island" />
+										<span class="inset-input-label">Island</span>
+									</label>
+								</div>
+								<!--end pils edit-->
 								<div class="input-text-container">
 									<label for="local" class="input-text--outlined">
 										<span class="screen-reader-only"><?php echo $LANG['LOCALITY_LOCALITIES'] ?></span>
@@ -359,7 +404,23 @@ $relationshipTypes = $associationManager->getRelationshipTypes();
 					<label for="coll-event" class="accordion-header"><?php echo $LANG['COLLECTING_EVENT'] ?></label>
 					<!-- Accordion content -->
 					<div class="content">
+						<!--pils edit-->
 						<div id="search-form-coll-event">
+							<div class="input-text-container">
+								<label for="fieldnum" class="input-text--outlined">
+									<span class="screen-reader-only">Field Number</span>
+									<input type="text" id="collnum" size="31" name="fieldnum" value="" data-chip="Field Number" />
+									<span class="inset-input-label">Field Number</span>
+								</label>
+							</div>
+							<div class="input-text-container">
+								<label for="collector" class="input-text--outlined">
+									<span class="screen-reader-only"><?php echo $LANG['COLLECTOR_NAME'] ?></span>
+									<input type="text" id="collector" size="32" name="collector" value="" data-chip="<?php echo $LANG['COLLECTOR_NAME'] ?>" />
+									<span class="inset-input-label"><?php echo $LANG['COLLECTOR_NAME']; ?></span>
+									<span class="assistive-text"><?= $LANG['SEPARATE_MULTIPLE'] ?></span>
+								</label>
+							</div>
 							<div class="input-text-container">
 								<label for="eventdate1" class="input-text--outlined">
 									<span class="screen-reader-only"><?php echo $LANG['COLLECTION_START_DATE'] ?></span>
@@ -374,22 +435,15 @@ $relationshipTypes = $associationManager->getRelationshipTypes();
 									<span class="inset-input-label"><?php echo $LANG['COLLECTION_END_DATE'] ?></span>
 								</label>
 							</div>
-							<div class="input-text-container">
-								<label for="collector" class="input-text--outlined">
-									<span class="screen-reader-only"><?php echo $LANG['COLLECTOR_NAME'] ?></span>
-									<input type="text" id="collector" size="32" name="collector" value="" data-chip="<?php echo $LANG['COLLECTOR_NAME'] ?>" />
-									<span class="inset-input-label"><?php echo $LANG['COLLECTOR_NAME']; ?></span>
-									<span class="assistive-text"><?= $LANG['SEPARATE_MULTIPLE'] ?></span>
-								</label>
-							</div>
-							<div class="input-text-container">
-								<label for="collnum" class="input-text--outlined">
-									<span class="screen-reader-only"><?php echo $LANG['COLLECTOR_NUMBER_'] ?></span>
-									<input type="text" id="collnum" size="31" name="collnum" value="" data-chip="<?php echo $LANG['COLLECTOR_NUMBER'] ?>" />
-									<span class="inset-input-label"><?php echo $LANG['COLLECTOR_NUMBER']; ?></span>
-									<span class="assistive-text"><?= htmlspecialchars($LANG['TITLE_TEXT_2'], ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE); ?></span>
-								</label>
-							</div>
+							<!--<div class="input-text-container">-->
+							<!--	<label for="collnum" class="input-text--outlined">-->
+							<!--		<span class="screen-reader-only"><?php echo $LANG['COLLECTOR_NUMBER_'] ?></span>-->
+							<!--		<input type="text" id="collnum" size="31" name="collnum" value="" data-chip="<?php echo $LANG['COLLECTOR_NUMBER'] ?>" />-->
+							<!--		<span class="inset-input-label"><?php echo $LANG['COLLECTOR_NUMBER']; ?></span>-->
+							<!--		<span class="assistive-text"><?= htmlspecialchars($LANG['TITLE_TEXT_2'], ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE); ?></span>-->
+							<!--	</label>-->
+							<!--</div>-->
+							<!--end pils edit-->
 						</div>
 					</div>
 				</section>
@@ -399,7 +453,7 @@ $relationshipTypes = $associationManager->getRelationshipTypes();
 					<!-- Accordion selector -->
 					<input type="checkbox" id="sample" class="accordion-selector" />
 					<!-- Accordion header -->
-					<label for="sample" class="accordion-header"><?php echo $LANG['SAMPLE_PROPERTIES'] ?></label>
+					<label for="sample" class="accordion-header">Specimen Properties</label>
 					<!-- Accordion content -->
 					<div class="content">
 						<div id="search-form-sample">
@@ -426,10 +480,10 @@ $relationshipTypes = $associationManager->getRelationshipTypes();
 									<input type="checkbox" name="hasimages" id="hasimages" value='1' data-chip="<?php echo $LANG['ONLY_WITH_IMAGES'] ?>" />
 									<label for="hasimages"><?php echo $LANG['LIMIT_TO_SPECIMENS_W_IMAGES'] ?></label>
 								</div>
-								<div>
-									<input type="checkbox" name="hasaudio" id="hasaudio" value='1' data-chip="<?php echo $LANG['ONLY_WITH_AUDIO'] ?>" />
-									<label for="hasaudio"><?php echo $LANG['LIMIT_TO_SPECIMENS_W_AUDIO'] ?></label>
-								</div>
+								<!--<div>-->
+								<!--	<input type="checkbox" name="hasaudio" id="hasaudio" value='1' data-chip="<?php echo $LANG['ONLY_WITH_AUDIO'] ?>" />-->
+								<!--	<label for="hasaudio"><?php echo $LANG['LIMIT_TO_SPECIMENS_W_AUDIO'] ?></label>-->
+								<!--</div>-->
 								<div>
 									<input type="checkbox" name="hasgenetic" id="hasgenetic" value=1 data-chip="<?php echo $LANG['ONLY_WITH_GENETIC'] ?>" />
 									<label for="hasgenetic"><?php echo $LANG['LIMIT_TO_SPECIMENS_W_GENETIC_DATA'] ?></label>
