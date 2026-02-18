@@ -21,6 +21,12 @@ let paramNames = [
   "hascoords",
   "includecult",
   "country",
+  //pils edit
+  "island",
+  "islandGroup",
+  "fieldnum",
+  //end pils edit
+  "country",
   "state",
   "county",
   "local",
@@ -856,9 +862,20 @@ function setSearchForm(frm) {
     if (urlVar.state) {
       frm.state.value = urlVar.state;
     }
-    if (urlVar.county) {
-      frm.county.value = urlVar.county;
+    //pils edit
+    //if (urlVar.county) {
+    //  frm.county.value = urlVar.county;
+    //}
+    if (urlVar.island) {
+      frm.island.value = urlVar.island;
     }
+    if (urlVar.islandgroup) {
+      frm.islandgroup.value = urlVar.islandgroup;
+    }
+    if (urlVar.fieldnum) {
+      frm.fieldnum.value = urlVar.fieldnum;
+    }
+    //end pils edit
     if (urlVar.local) {
       frm.local.value = urlVar.local;
     }
