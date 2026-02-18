@@ -117,9 +117,6 @@ $collectionSearchPage = !empty($SHOULD_USE_HARVESTPARAMS) ? '/collections/index.
 						<a href="<?php echo $CLIENT_ROOT; ?>/taxa/taxonomy/taxonomydisplay.php?target=Animalia">Taxonomy</a>
 					</li>
 					<li>
-						<a href="<?php echo $CLIENT_ROOT; ?>/pilsbry/contact.php" >Contact</a>
-					</li>
-					<li>
 						<a href='<?= $CLIENT_ROOT ?>/sitemap.php'>
 							<?= $LANG['H_SITEMAP'] ?>
 						</a>
