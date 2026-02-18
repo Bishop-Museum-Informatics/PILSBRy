@@ -57,6 +57,11 @@ if ($isEditor) {
 			header('Location: taxonomydisplay.php?statusstr=' . $statusStr);
 		} else $statusStr = $taxonEditorObj->getErrorMessage();
 	}
+	//pils edit
+	elseif ($submitAction == 'updateenvironment') {
+		$statusStr = $taxonEditorObj->updateHabitatFlags($_POST);
+	}
+	//end pils edit
 	$taxonEditorObj->setTaxon();
 }
 ?>
@@ -184,6 +189,9 @@ if ($isEditor) {
 				<ul>
 					<li><a href="#editorDiv"><?= $LANG['EDITOR'] ?></a></li>
 					<li><a href="#taxonstatusdiv"><?= $LANG['TAX_STATUS'] ?></a></li>
+					<!--pils edit-->
+					<li><a href="#environmentdiv">Environment</a></li>
+					<!--end pils edit-->
 					<li><a href="#hierarchydiv"><?= $LANG['HIERARCHY'] ?></a></li>
 					<li><a href="taxonomychildren.php?tid=<?= $tid . '&taxauthid=' . $taxAuthId ?>"><?= $LANG['CHILDREN_TAXA'] ?></a></li>
 					<li><a href="taxonomydelete.php?tid=<?= $tid ?>&genusstr=<?= htmlspecialchars($taxonEditorObj->getUnitName1(), ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE); ?>"><?= $LANG['DELETE'] ?></a></li>
@@ -627,6 +635,58 @@ if ($isEditor) {
 						</div>
 					</fieldset>
 				</div>
+				<!--pils edit-->
+				<div id="environmentdiv" style="min-height:400px;">
+					<fieldset style="width:500px;padding:20px;">
+						<legend><b>Habitat Classification</b></legend>
+				
+						<?php
+						$habitatArr = $taxonEditorObj->getHabitatFlags();
+						?>
+				
+						<form action="taxoneditor.php" method="post">
+							<div style="margin:10px 0;">
+								<label>
+									<input type="checkbox" name="isTerrestrial" value="1"
+										<?= !empty($habitatArr['isTerrestrial']) ? 'checked' : '' ?>>
+									Terrestrial
+								</label>
+							</div>
+				
+							<div style="margin:10px 0;">
+								<label>
+									<input type="checkbox" name="isMarine" value="1"
+										<?= !empty($habitatArr['isMarine']) ? 'checked' : '' ?>>
+									Marine
+								</label>
+							</div>
+				
+							<div style="margin:10px 0;">
+								<label>
+									<input type="checkbox" name="isFreshwater" value="1"
+										<?= !empty($habitatArr['isFreshwater']) ? 'checked' : '' ?>>
+									Freshwater
+								</label>
+							</div>
+				
+							<div style="margin:10px 0;">
+								<label>
+									<input type="checkbox" name="isBrackish" value="1"
+										<?= !empty($habitatArr['isBrackish']) ? 'checked' : '' ?>>
+									Brackish
+								</label>
+							</div>
+				
+							<input type="hidden" name="tid" value="<?= $taxonEditorObj->getTid(); ?>">
+							<input type="hidden" name="taxauthid" value="<?= $taxAuthId; ?>">
+							<input type="hidden" name="tabindex" value="2">
+							<input type="hidden" name="submitaction" value="updateenvironment">
+				
+							<button type="submit">Save Environment</button>
+						</form>
+					</fieldset>
+				</div>
+				<!--end pils edit-->
 				<div id="hierarchydiv" style="height:400px;">
 					<fieldset style="width:420px;padding:25px;">
 						<legend><b><?php echo $LANG['QUERY_HIERARCHY']; ?></b></legend>
@@ -635,7 +695,9 @@ if ($isEditor) {
 								<input type="hidden" name="tid" value="<?php echo $taxonEditorObj->getTid(); ?>" />
 								<input type="hidden" name="taxauthid" value="<?php echo $taxAuthId; ?>">
 								<input type="hidden" name="submitaction" value="updatehierarchy" />
-								<input type="hidden" name="tabindex" value="2" />
+								<!--pils edit-->
+								<input type="hidden" name="tabindex" value="3" />
+								<!--end pils edit-->
 								<input type="image" name="imagesubmit" src="../../images/undo.png" style="width:20px;" />
 							</form>
 						</div>

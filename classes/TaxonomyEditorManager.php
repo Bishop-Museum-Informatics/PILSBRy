@@ -37,6 +37,9 @@ class TaxonomyEditorManager extends Manager{
 	private $acceptedArr = Array();
 	private $synonymArr = Array();
 	private $langArr;
+	//pils edit
+	private $habitatFlags = [];
+	//end pils edit
 
 	function __construct($type = 'write') {
 		parent::__construct(null,$type);
@@ -417,6 +420,38 @@ class TaxonomyEditorManager extends Manager{
 		$sqltl = 'UPDATE taxalinks SET tid = '.$tidNew.' WHERE (tid = '.$tid.')';
 		$this->conn->query($sqltl);
 	}
+	
+	//pils edit
+	public function updateHabitatFlags($postArr){
+	
+		$isTerrestrial = isset($postArr['isTerrestrial']) ? 1 : 0;
+		$isMarine      = isset($postArr['isMarine']) ? 1 : 0;
+		$isFreshwater  = isset($postArr['isFreshwater']) ? 1 : 0;
+		$isBrackish    = isset($postArr['isBrackish']) ? 1 : 0;
+	
+		$sql = "INSERT INTO pilstaxa (tid, isTerrestrial, isMarine, isFreshwater, isBrackish)
+				VALUES (?, ?, ?, ?, ?)
+				ON DUPLICATE KEY UPDATE
+					isTerrestrial = VALUES(isTerrestrial),
+					isMarine = VALUES(isMarine),
+					isFreshwater = VALUES(isFreshwater),
+					isBrackish = VALUES(isBrackish)";
+	
+		if($stmt = $this->conn->prepare($sql)){
+			$stmt->bind_param("iiiii",
+				$this->tid,
+				$isTerrestrial,
+				$isMarine,
+				$isFreshwater,
+				$isBrackish
+			);
+			$stmt->execute();
+			$stmt->close();
+		}
+	
+		return "SUCCESS: Environment updated";
+	}
+	//end pils edit
 
 	private function resetCharStateInheritance($tid){
 		//set inheritance for target only
@@ -1157,6 +1192,24 @@ class TaxonomyEditorManager extends Manager{
 		}
 		return $retArr;
 	}
+	
+	//pils edit
+	public function getHabitatFlags(){
+		$this->habitatFlags = [];
+	
+		$sql = "SELECT isTerrestrial, isMarine, isFreshwater, isBrackish
+				FROM pilstaxa
+				WHERE tid = ".$this->tid;
+	
+		$rs = $this->conn->query($sql);
+		if($rs && $row = $rs->fetch_assoc()){
+			$this->habitatFlags = $row;
+		}
+		$rs->free();
+	
+		return $this->habitatFlags;
+	}
+	//end pils edit
 
 	public function getChildren(){
 		$retArr = array();

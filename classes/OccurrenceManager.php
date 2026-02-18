@@ -529,6 +529,33 @@ class OccurrenceManager extends OccurrenceTaxaManager {
 				$this->displaySearchArr[] = $this->LANG['INCLUDE_CULTIVATED'];
 			}
 		}
+		//pils edit
+		$habitatFlags = [];
+		
+		if(array_key_exists('isterrestrial', $this->searchTermArr)){
+			$habitatFlags[] = 'pt.isTerrestrial = 1';
+			$this->displaySearchArr[] = 'Terrestrial';
+		}
+		
+		if(array_key_exists('ismarine', $this->searchTermArr)){
+			$habitatFlags[] = 'pt.isMarine = 1';
+			$this->displaySearchArr[] = 'Marine';
+		}
+		
+		if(array_key_exists('isfreshwater', $this->searchTermArr)){
+			$habitatFlags[] = 'pt.isFreshwater = 1';
+			$this->displaySearchArr[] = 'Freshwater';
+		}
+		
+		if(array_key_exists('isbrackish', $this->searchTermArr)){
+			$habitatFlags[] = 'pt.isBrackish = 1';
+			$this->displaySearchArr[] = 'Brackish';
+		}
+		
+		if($habitatFlags){
+			$sqlWhere .= 'AND (' . implode(' OR ', $habitatFlags) . ') ';
+		}
+		//end pils edit
 		// var_dump('$sqlWhere after includecult: ' . $sqlWhere);
 		if(array_key_exists('attr',$this->searchTermArr)){
 			$traitNameSql = 'SELECT t.traitName, s.stateName FROM tmtraits t JOIN tmstates s ON s.traitid = t.traitid WHERE s.stateid IN(' . $this->searchTermArr['attr'] . ')';
@@ -621,6 +648,16 @@ class OccurrenceManager extends OccurrenceTaxaManager {
 			if(array_key_exists('footprintGeoJson',$this->searchTermArr) || strpos($sqlWhere,'p.lngLatPoint')){
 				$sqlJoin .= 'INNER JOIN omoccurpoints p ON o.occid = p.occid ';
 			}
+			//pils edit
+			if(
+				array_key_exists('isterrestrial',$this->searchTermArr) ||
+				array_key_exists('ismarine',$this->searchTermArr) ||
+				array_key_exists('isfreshwater',$this->searchTermArr) ||
+				array_key_exists('isbrackish',$this->searchTermArr)
+			){
+				$sqlJoin .= 'INNER JOIN pilstaxa pt ON o.tidinterpreted = pt.tid ';
+			}
+			//end pils edit
 		}
 		return $sqlJoin;
 	}
@@ -1090,6 +1127,27 @@ class OccurrenceManager extends OccurrenceTaxaManager {
 			if($_REQUEST['includecult']) $this->searchTermArr['includecult'] = true;
 			else unset($this->searchTermArr['includecult']);
 		}
+		//pils edit
+		if(array_key_exists('isterrestrial',$_REQUEST)){
+			if($_REQUEST['isterrestrial']) $this->searchTermArr['isterrestrial'] = true;
+			else unset($this->searchTermArr['isterrestrial']);
+		}
+		
+		if(array_key_exists('ismarine',$_REQUEST)){
+			if($_REQUEST['ismarine']) $this->searchTermArr['ismarine'] = true;
+			else unset($this->searchTermArr['ismarine']);
+		}
+		
+		if(array_key_exists('isfreshwater',$_REQUEST)){
+			if($_REQUEST['isfreshwater']) $this->searchTermArr['isfreshwater'] = true;
+			else unset($this->searchTermArr['isfreshwater']);
+		}
+		
+		if(array_key_exists('isbrackish',$_REQUEST)){
+			if($_REQUEST['isbrackish']) $this->searchTermArr['isbrackish'] = true;
+			else unset($this->searchTermArr['isbrackish']);
+		}
+		//end pils edit
 		if(array_key_exists('attr',$_REQUEST)){
 			//Occurrence trait attributed passed as stateIDs
 			$stateIdStr = $_REQUEST['attr'];

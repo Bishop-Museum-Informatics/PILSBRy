@@ -25,6 +25,10 @@ let paramNames = [
   "island",
   "islandGroup",
   "fieldnum",
+  "isterrestrial",
+  "ismarine",
+  "isfreshwater",
+  "isbrackish",
   //end pils edit
   "country",
   "state",

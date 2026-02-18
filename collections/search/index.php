@@ -150,25 +150,25 @@ $relationshipTypes = $associationManager->getRelationshipTypes();
 						</div>
 						<div>
 							<div>
-								<input type="checkbox" name="isterr" id="isterr" data-chip="Terrestrial" value="1" checked />
+								<input type="checkbox" name="isterrestrial" id="isterrestrial" data-chip="Terrestrial" value="1" checked />
 								<label for="isterr">
 									<span class="ml-1">Terrestrial</span>
 								</label>
 							</div>
 							<div>
-								<input type="checkbox" name="ismarine" id="ismarine" data-chip="Marine" value="1" checked />
+								<input type="checkbox" name="ismarine" id="ismarine" data-chip="Marine" value="1" />
 								<label for="ismarine">
 									<span class="ml-1">Marine</span>
 								</label>
 							</div>
 							<div>
-								<input type="checkbox" name="isfreshwater" id="isfreshwater" data-chip="Freshwater" value="1" checked />
+								<input type="checkbox" name="isfreshwater" id="isfreshwater" data-chip="Freshwater" value="1" />
 								<label for="isfreshwater">
 									<span class="ml-1">Freshwater</span>
 								</label>
 							</div>
 							<div>
-								<input type="checkbox" name="isbrackish" id="isbrackish" data-chip="Brackish" value="1" checked />
+								<input type="checkbox" name="isbrackish" id="isbrackish" data-chip="Brackish" value="1" />
 								<label for="isbrackish">
 									<span class="ml-1">Brackish</span>
 								</label>
