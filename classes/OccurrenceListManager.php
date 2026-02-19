@@ -85,7 +85,7 @@ class OccurrenceListManager extends OccurrenceManager{
 				$retArr[$row->occid]['county'] = $this->cleanOutStr($row->county);
 				//pils edit
 				$retArr[$row->occid]['island'] = $this->cleanOutStr($row->island);
-				$retArr[$row->occid]['islandGroup'] = $this->cleanOutStr($row->islandGroup);
+				$retArr[$row->occid]['islandgroup'] = $this->cleanOutStr($row->islandGroup);
 				$retArr[$row->occid]['fieldnum'] = $this->cleanOutStr($row->fieldNumber);
 				//end pils edit
 				$retArr[$row->occid]['obsuid'] = $row->observeruid;
