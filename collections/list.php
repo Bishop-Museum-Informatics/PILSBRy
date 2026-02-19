@@ -260,8 +260,10 @@ $_SESSION['citationvar'] = $searchVar;
 												'o.recordNumber' => $LANG['NUMBER'],
 												'o.eventDate' => $LANG['EVENT_DATE'],
 												'o.country' => $LANG['COUNTRY'],
+												'o.islandGroup' => 'Island Group',
 												'o.StateProvince' => $LANG['STATE_PROVINCE'],
-												'o.county' => $LANG['COUNTY'],
+												//'o.county' => $LANG['COUNTY'],
+												'o.island' => 'Island',
 												'o.minimumElevationInMeters' => $LANG['ELEVATION']
 											);
 											foreach ($sortFields as $k => $v) {
@@ -402,14 +404,22 @@ $_SESSION['citationvar'] = $searchVar;
 									}
 									echo '</div>';
 									echo '<div style="margin:4px">';
-									echo '<span style="width:150px;">' . $fieldArr["catnum"] . '</span>';
-									echo '<span style="width:200px;margin-left:30px;">' . $fieldArr["collector"] . '&nbsp;&nbsp;&nbsp;' . (isset($fieldArr["collnum"]) ? $fieldArr["collnum"] : '') . '</span>';
+									//pils edit
+									//echo '<span style="width:150px;">' . $fieldArr["catnum"] . '</span>';
+									echo '<span style="width:150px;">' .
+										($fieldArr["collid"] == 1 ? 'BPBM ' : '') .
+										$fieldArr["catnum"] .
+									'</span>';
+									echo '<span style="width:200px;margin-left:30px;">' . $fieldArr["collector"];/* . '&nbsp;&nbsp;&nbsp;' . (isset($fieldArr["collnum"]) ? $fieldArr["collnum"] : '') . '</span>';*/
 									if (isset($fieldArr["date"])) echo '<span style="margin-left:30px;">' . $fieldArr["date"] . '</span>';
 									echo '</div><div style="margin:4px">';
 									$localStr = '';
 									if ($fieldArr["country"]) $localStr .= $fieldArr["country"];
+									if ($fieldArr["islandgroup"]) $localStr .= ', ' . $fieldArr["islandgroup"];
 									if ($fieldArr["state"]) $localStr .= ', ' . $fieldArr["state"];
-									if ($fieldArr["county"]) $localStr .= ', ' . $fieldArr["county"];
+									//if ($fieldArr["county"]) $localStr .= ', ' . $fieldArr["county"];
+									if ($fieldArr["island"]) $localStr .= ', ' . $fieldArr["island"];
+									//end pils edit
 									if ($fieldArr['locality'] == 'PROTECTED') {
 										$localStr .= ', <span style="color:red;">' . $LANG['PROTECTED'] . '</span>';
 									} else {
